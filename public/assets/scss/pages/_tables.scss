@@ -1,0 +1,24 @@
+.table-container {
+  width: 90vw;
+  background: $black;
+  @include center-full;
+
+  table {
+    width: 100%;
+    color: $white;
+    border-collapse: collapse;
+
+
+    th {
+      padding: 8px;
+      border: $white solid 1px;
+
+    }
+
+    td {
+      padding: 8px;
+      border: $white solid 1px;
+
+    }
+  }
+}

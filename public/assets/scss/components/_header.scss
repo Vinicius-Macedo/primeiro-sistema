@@ -1,0 +1,208 @@
+$li-length: 3;
+$ul-height: 3 * 70px;
+
+#overlay {
+  z-index: 1;
+  transition: 0.1s;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+nav {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: $dark;
+  border-bottom: 2px solid $burgundy;
+
+  .logo {
+    order: 1;
+    width: 50px;
+  }
+
+  .fale-comigo {
+    padding: 10px 25px;
+    border: 2px solid $white;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: $font-p;
+    color: $white;
+    text-decoration: none;
+    order: 2;
+  }
+
+  .toggle-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 58px;
+    order: 3;
+
+    .bars {
+      transition: $trasition;
+      display: block;
+      width: $menu-width;
+      height: $menu-height;
+      background: $white;
+
+      &::after,
+      &::before {
+        transition: $trasition;
+        position: absolute;
+        content: "";
+        width: $menu-width;
+        height: $menu-height;
+        background: $white;
+      }
+
+      &::before {
+        margin-top: -$menu-margin;
+      }
+
+      &::after {
+        margin-top: $menu-margin;
+      }
+    }
+  }
+
+  .nav-list {
+    z-index: 7;
+    order: 3;
+    background: $dark;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 0px;
+    width: 100%;
+    border-bottom: 2px solid $burgundy;
+    visibility: hidden;
+    overflow-y: hidden;
+    list-style: none;
+    transition: 0.6s;
+
+    li {
+      display: flex;
+      height: 70px;
+
+      a {
+        display: flex;
+        line-height: 70px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: $font-p;
+        font-weight: 700;
+        text-decoration: none;
+        color: $white;
+      }
+    }
+  }
+
+  &.active {
+    .nav-list {
+      height: $ul-height;
+      display: block;
+      visibility: visible;
+    }
+
+    .bars {
+      background: none;
+
+      &::before {
+        transform: rotate(45deg);
+        margin-top: 0;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  nav {
+    gap: 24px;
+    padding: 0 40px;
+
+    .toggle-icon {
+      display: none;
+    }
+
+    .fale-comigo {
+      order: 3;
+    }
+
+    .nav-list {
+      height: 100%;
+      gap: 4px;
+      margin-left: auto;
+      order: 2;
+      display: flex;
+      width: auto;
+      height: auto;
+      background: transparent;
+      border: none;
+      position: static;
+      visibility: visible;
+      overflow-y: visible;
+
+      li {
+        background: transparent;
+        &:hover {
+          text-decoration: underline;
+        }
+        a {
+          padding: 10px 20px;
+
+          
+        }
+      }
+    }
+  }
+}
+
+@include responsive(lg) {
+  nav {
+    background: transparent;
+    border: none;
+    height: 80px;
+    padding: 0 80px;
+
+    .nav-list {
+      height: 100%;
+
+      li {
+        height: 100%;
+        a {
+          font-size: $font-p * 1.13;
+        }
+      }
+      .fale-comigo {
+        font-size: $font-p * 1.13;
+      }
+    }
+  }
+}
+
+@include responsive(my) {
+  nav {
+    height: 200px;
+    padding: 0 140px;
+  }
+}

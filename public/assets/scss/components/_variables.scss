@@ -1,0 +1,30 @@
+$white: #fdfdfd;
+$dark: #101010;
+$black: #303030;
+$burgundy: #250000;
+$grey: #8b8b8b;
+
+$font-texto: "Raleway", sans-serif;
+$font-titulo: 'Open Sans', sans-serif;
+$font-p: 1rem;
+$font-h1: 1.618rem;
+
+$menu-width: 35px;
+$menu-height: 3px;
+$menu-margin: 8px;
+$trasition: 0.3s;
+
+@mixin center-full {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.w-full {
+  width: 100%;
+}
